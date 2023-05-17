@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { tenureData } from "./utils/constants";
+import TextInput from "./components/TextInput";
 
 function App() {
   const [cost, setCost] = useState(5000000);
@@ -56,20 +57,8 @@ function App() {
       <span className="title" style={{ fontSize: 30, marginTop: 10 }}>
         EMI Calculator
       </span>
-      <span className="title">Total cost of Asset</span>
-      <input
-        type="number"
-        value={cost}
-        onChange={(e) => setCost(e.target.value)}
-        placeholder="Total cost of asset"
-      />
-      <span className="title">Processing Fee in %</span>
-      <input
-        type="number"
-        value={fee}
-        onChange={(e) => setFee(e.target.value)}
-        placeholder="Processing Fee in %"
-      />
+      <TextInput title="Total cost of Asset" state={cost} setState={setCost}/>
+      <TextInput title="Processing Fee in %" state={fee} setState={setFee}/>
       <span className="title">Down Payment</span>
       <span className="title" style={{textDecoration:"underline"}}>
         Total Down Payment-{""} {(Number(downPayment)+(cost-downPayment) * (fee/100)).toFixed(0)}
